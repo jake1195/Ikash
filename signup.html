@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <link rel="manifest" href="images/site.webmanifest">
-    <title>Ikash Loans Ke</title>
+    <title>Ikash Loans App</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="shared.css">
     <style>
@@ -100,17 +100,17 @@
 </head>
 
 <body>
-    <div class="loading-overlay"> </div>
+    <div class="loading-overlay">
         <div class="spinner"></div>
-    
+    </div>
 
         <!-- PWA Install Popup -->
         <div id="pwa-install-popup">
             <div class="pwa-popup-content">
                 <div class="logo-container">
-                    <h1 class="logo-text">Ikash<br>Loans Ke</h1>
+                    <h1 class="logo-text">Ikash<br>Loans<br>App</h1>
                 </div>
-                <h2>Install Ikash Loans</h2>
+                <h2>Install Ikash Loans App</h2>
                 <p>For easy follow up, it is a requirement that you <strong>INSTALL</strong> our app!</p>
                 <!--img src="/images/icons/icon-192x192.png" alt="Mkopo ChapChap App Icon"-->
                 <div class="pwa-popup-buttons">
@@ -125,9 +125,9 @@
 
     <header>
         <nav class="navbar">
-            <div class="logo">Ikash Loans Ke</div>
+            <div class="logo">Ikash Loans App</div>
             <ul class="nav-links" id="nav-links">
-                <li><a href="login.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="login.html">Login</a></li>
@@ -143,7 +143,7 @@
     <div class="main-container">
         <!-- Left Section with Content -->
         <div class="left-content">
-            <h1>Easy <br> Loan</h1>
+            <h1>Ikash <br> Loan<br></h1>
             <p>
                 Let us help you manage your finances effortlessly.
                 Get a loan for business, personal needs, emergencies, or more.
@@ -153,7 +153,7 @@
         <!-- Form Section (Aligned to the Right) -->
         <div class="form-wrapper">
             <h1>Find Your Loan Eligibility</h1>
-            <h3>We offer loans from Ksh. 2,000 - 50,000 loan to MPESA</h3>
+            <h3>We offer loans from Ksh. 2,000 - 25,000 loan to MPESA</h3>
 
             <form id="loanForm">
                 <input type="text" id="names" placeholder="Your Name" required="">
@@ -207,7 +207,7 @@
                     <option value="ethiopia">Nyamira</option>
                     <option value="egypt">Nairobi</option>
                 </select>
-                <input type="tel" id="mpesaS" placeholder="MPESA Phone Number" required="">
+                <input type="tel" id="mpesas" placeholder="MPESA Phone Number" required="">
                 <input type="text" id="idNumber" placeholder="National ID Number" required="">
                 <select id="loanType" required="">
                     <option value="" disabled="" selected="">Select Gender</option>
@@ -256,13 +256,13 @@
         window.addEventListener('beforeinstallprompt', (e) => {
             // Prevent the mini-infobar from appearing on mobile
             e.preventDefault();
-            
+
             // Stash the event so it can be triggered later
             deferredPrompt = e;
 
             // Check if user has already dismissed the prompt
             //const hasSeenInstallPrompt = localStorage.getItem('pwaInstallPromptDismissed');
-            
+
             // Show popup after 2 seconds if not previously dismissed
             setTimeout(() => {
                // if (!hasSeenInstallPrompt) {
@@ -275,11 +275,11 @@
         function installPWA() {
             // Hide the popup
             pwaInstallPopup.style.display = 'none';
-            
+
             // Show the install prompt
             if (deferredPrompt) {
                 deferredPrompt.prompt();
-                
+
                 // Wait for the user to respond to the prompt
                 deferredPrompt.userChoice.then((choiceResult) => {
                     if (choiceResult.outcome === 'accepted') {
@@ -288,7 +288,7 @@
                     } else {
                         console.log('User dismissed the PWA install');
                     }
-                    
+
                     // Reset the deferredPrompt
                     deferredPrompt = null;
                 });
@@ -309,9 +309,9 @@
 //        window.onload = function () {
             // Check if app is already loaded
   //          if (localStorage.getItem('loanapplied') === 'true') {
-    //            window.location.href = 'review page ';
+    //            window.location.href = 'reviewpage.html';
       //      } else if (localStorage.getItem('visited') === 'true') {
-        //        window.location.href = 'application-details.html';
+        //        window.location.href = 'upplication-details.html';
           //  }
 
         //    document.getElementById('welcomeScreen').style.display = 'block';
@@ -320,11 +320,10 @@
         // [Rest of the existing JavaScript remains the same]
     </script>
 
-    <script src="Index.html\index.js"></script>
-    
+    <script src="index.js"></script>
 
     <footer>
-        <p>© 2024 Ikash Loans Ke. All rights reserved. <a href="referee.html">Home</a></p>
+        <p>© 2025 Ikash Loans App. All rights reserved. <a href="index.html">Home</a></p>
     </footer>
 
 
